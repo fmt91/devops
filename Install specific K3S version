@@ -1,20 +1,20 @@
-Download specific k3s version & install script:
+# Download specific k3s version & install script:
 
 wget https://github.com/k3s-io/k3s/releases/download/v1.24.12-rc1%2Bk3s1/k3s
 curl -sfL https://get.k3s.io -o install-k3s.sh
 
-Place & make them runnable
+# Place & make them runnable
 chmod +x k3s
 mv k3s /usr/local/bin/
 chmod +x install-k3s.sh
 
-Install Master
+# Install Master
 export INSTALL_K3S_SKIP_DOWNLOAD=tru
 ./install-k3s.sh
 cp /etc/rancher/k3s/k3s.yaml /root/.config/config.yaml
 
 
-Install Worker:
+# Install Worker:
 
 export K3S_URL=https://192.168.0.220:6443 
 export K3S_TOKEN=adasd323434234asdasdsad
