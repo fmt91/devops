@@ -1,0 +1,102 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: Bundle
+metadata:
+  generation: 2
+  labels:
+    fleet.cattle.io/commit: 6fd67ad3fec4287fdaaf4cc0249c37c1ce89173b
+    fleet.cattle.io/repo-name: demo-app
+  managedFields:
+  - apiVersion: fleet.cattle.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:fleet.cattle.io/commit: {}
+          f:fleet.cattle.io/repo-name: {}
+      f:spec:
+        .: {}
+        f:forceSyncGeneration: {}
+        f:namespace: {}
+        f:resources: {}
+        f:targetRestrictions: {}
+        f:targets: {}
+    manager: fleet
+    operation: Update
+    time: "2023-04-14T11:07:38Z"
+  - apiVersion: fleet.cattle.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:conditions: {}
+        f:display:
+          .: {}
+          f:readyClusters: {}
+        f:maxNew: {}
+        f:maxUnavailable: {}
+        f:maxUnavailablePartitions: {}
+        f:observedGeneration: {}
+        f:partitions: {}
+        f:resourceKey: {}
+        f:summary:
+          .: {}
+          f:desiredReady: {}
+          f:ready: {}
+        f:unavailable: {}
+        f:unavailablePartitions: {}
+    manager: fleetcontroller
+    operation: Update
+    subresource: status
+    time: "2023-04-14T11:08:48Z"
+  name: demo-app-multi-helm
+  namespace: fleet-default
+  resourceVersion: "528033"
+  uid: 0d98305b-2be2-4828-954c-9ecc03c6f36a
+spec:
+  forceSyncGeneration: 6
+  namespace: fleet-mc-helm-example
+  resources:
+  - content: |
+    apiVersion: v2
+    name: guestbook
+    description: Sample application
+    version: 0.0.0
+    appVersion: 0.0.0
+  name: Chart.yam
+  targetRestrictions:
+  - clusterSelector:
+      matchExpressions:
+      - key: provider.cattle.io
+        operator: NotIn
+        values:
+        - harvester
+  targets:
+  - clusterSelector:
+      matchLabels:
+        env: dev
+    helm:
+      values:
+        replication: false
+    name: dev
+  - clusterSelector:
+      matchLabels:
+        env: test
+    helm:
+      values:
+        replicas: 3
+    name: test
+  - clusterSelector:
+      matchLabels:
+        env: prod
+    helm:
+      values:
+        replicas: 3
+        serviceType: LoadBalancer
+    name: prod
+  - clusterSelector:
+      matchExpressions:
+      - key: provider.cattle.io
+        operator: NotIn
+        values:
+        - harvester
