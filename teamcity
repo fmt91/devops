@@ -1,1 +1,1 @@
-docker run --name teamcity-server-instance -v /opt/teamcity/data:/data/teamcity_server/datadir -v /opt/teamcity/logs:/opt/teamcity/logs -p <port-on-host>:8111 jetbrains/teamcity-server
+docker run --name teamcity-server-instance -v /mnt/stateful_partition/opt/teamcity/data:/data/teamcity_server/datadir -v /mnt/stateful_partition/opt/teamcity/logs:/opt/teamcity/logs -p <port-on-host>:8111 jetbrains/teamcity-server
