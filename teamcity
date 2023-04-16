@@ -1,0 +1,1 @@
+docker run --name teamcity-server-instance -v /opt/teamcity/data:/data/teamcity_server/datadir -v /opt/teamcity/logs:/opt/teamcity/logs -p <port-on-host>:8111 jetbrains/teamcity-server
