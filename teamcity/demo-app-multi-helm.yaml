@@ -51,7 +51,6 @@ metadata:
     time: "2023-04-14T11:08:48Z"
   name: demo-app-multi-helm
   namespace: fleet-default
-  resourceVersion: "528033"
   uid: 0d98305b-2be2-4828-954c-9ecc03c6f36a
 spec:
   forceSyncGeneration: 6
