@@ -24,7 +24,6 @@ metadata:
         f:targets: {}
     manager: kubectl-client-side-apply
     operation: Update
-    time: "2023-04-14T12:10:30Z"
   - apiVersion: fleet.cattle.io/v1alpha1
     fieldsType: FieldsV1
     fieldsV1:
