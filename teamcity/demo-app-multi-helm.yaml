@@ -1,101 +1,161 @@
 apiVersion: fleet.cattle.io/v1alpha1
-kind: Bundle
+kind: GitRepo
 metadata:
-  generation: 2
-  labels:
-    fleet.cattle.io/commit: 6fd67ad3fec4287fdaaf4cc0249c37c1ce89173b
-    fleet.cattle.io/repo-name: demo-app
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"fleet.cattle.io/v1alpha1","kind":"GitRepo","metadata":{"annotations":{},"creationTimestamp":"2023-04-13T20:41:58Z","generation":14,"managedFields":[{"apiVersion":"fleet.cattle.io/v1alpha1","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{".":{},"f:branch":{},"f:forceSyncGeneration":{},"f:insecureSkipTLSVerify":{},"f:paths":{},"f:repo":{},"f:targets":{}}},"manager":"rancher","operation":"Update","time":"2023-04-14T10:59:58Z"},{"apiVersion":"fleet.cattle.io/v1alpha1","fieldsType":"FieldsV1","fieldsV1":{"f:status":{".":{},"f:commit":{},"f:conditions":{},"f:desiredReadyClusters":{},"f:display":{".":{},"f:readyBundleDeployments":{}},"f:gitJobStatus":{},"f:lastSyncedImageScanTime":{},"f:observedGeneration":{},"f:readyClusters":{},"f:resourceCounts":{".":{},"f:desiredReady":{},"f:missing":{},"f:modified":{},"f:notReady":{},"f:orphaned":{},"f:ready":{},"f:unknown":{},"f:waitApplied":{}},"f:summary":{".":{},"f:desiredReady":{},"f:ready":{}}}},"manager":"fleetcontroller","operation":"Update","subresource":"status","time":"2023-04-14T12:04:09Z"}],"name":"demo-app","namespace":"fleet-default","uid":"1c0d29fc-0494-4027-a116-4b919b068a76"},"spec":{"branch":"test","forceSyncGeneration":6,"insecureSkipTLSVerify":true,"paths":["multi/helm"],"repo":"https://github.com/fmt91/fleet.git","targets":[{"clusterSelector":{"matchExpressions":[{"key":"provider.cattle.io","operator":"NotIn","values":["harvester"]}]}}]}}
+  creationTimestamp: "2023-04-14T12:10:30Z"
+  generation: 1
   managedFields:
   - apiVersion: fleet.cattle.io/v1alpha1
     fieldsType: FieldsV1
     fieldsV1:
       f:metadata:
-        f:labels:
+        f:annotations:
           .: {}
-          f:fleet.cattle.io/commit: {}
-          f:fleet.cattle.io/repo-name: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
       f:spec:
         .: {}
+        f:branch: {}
         f:forceSyncGeneration: {}
-        f:namespace: {}
-        f:resources: {}
-        f:targetRestrictions: {}
+        f:insecureSkipTLSVerify: {}
+        f:paths: {}
+        f:repo: {}
         f:targets: {}
-    manager: fleet
+    manager: kubectl-client-side-apply
     operation: Update
-    time: "2023-04-14T11:07:38Z"
+    time: "2023-04-14T12:10:30Z"
   - apiVersion: fleet.cattle.io/v1alpha1
     fieldsType: FieldsV1
     fieldsV1:
       f:status:
         .: {}
+        f:commit: {}
         f:conditions: {}
+        f:desiredReadyClusters: {}
         f:display:
           .: {}
-          f:readyClusters: {}
-        f:maxNew: {}
-        f:maxUnavailable: {}
-        f:maxUnavailablePartitions: {}
+          f:readyBundleDeployments: {}
+        f:gitJobStatus: {}
+        f:lastSyncedImageScanTime: {}
         f:observedGeneration: {}
-        f:partitions: {}
-        f:resourceKey: {}
+        f:readyClusters: {}
+        f:resourceCounts:
+          .: {}
+          f:desiredReady: {}
+          f:missing: {}
+          f:modified: {}
+          f:notReady: {}
+          f:orphaned: {}
+          f:ready: {}
+          f:unknown: {}
+          f:waitApplied: {}
+        f:resources: {}
         f:summary:
           .: {}
           f:desiredReady: {}
           f:ready: {}
-        f:unavailable: {}
-        f:unavailablePartitions: {}
     manager: fleetcontroller
     operation: Update
     subresource: status
-    time: "2023-04-14T11:08:48Z"
-  name: demo-app-multi-helm
+    time: "2023-04-14T15:51:43Z"
+  name: demo-app
   namespace: fleet-default
-  uid: 0d98305b-2be2-4828-954c-9ecc03c6f36a
+  uid: a3bc83c6-be96-46b1-a253-17db28006867
 spec:
+  branch: test
   forceSyncGeneration: 6
-  namespace: fleet-mc-helm-example
-  resources:
-  - content: |
-    apiVersion: v2
-    name: guestbook
-    description: Sample application
-    version: 0.0.0
-    appVersion: 0.0.0
-  name: Chart.yam
-  targetRestrictions:
-  - clusterSelector:
-      matchExpressions:
-      - key: provider.cattle.io
-        operator: NotIn
-        values:
-        - harvester
+  insecureSkipTLSVerify: true
+  paths:
+  - multi/helm
+  repo: https://github.com/fmt91/fleet.git
   targets:
   - clusterSelector:
-      matchLabels:
-        env: dev
-    helm:
-      values:
-        replication: false
-    name: dev
-  - clusterSelector:
-      matchLabels:
-        env: test
-    helm:
-      values:
-        replicas: 3
-    name: test
-  - clusterSelector:
-      matchLabels:
-        env: prod
-    helm:
-      values:
-        replicas: 3
-        serviceType: LoadBalancer
-    name: prod
-  - clusterSelector:
       matchExpressions:
       - key: provider.cattle.io
         operator: NotIn
         values:
         - harvester
+status:
+  commit: 6fd67ad3fec4287fdaaf4cc0249c37c1ce89173b
+  conditions:
+  - lastUpdateTime: "2023-04-14T15:51:43Z"
+    status: "True"
+    type: Ready
+  - lastUpdateTime: "2023-04-17T08:24:14Z"
+    status: "True"
+    type: Accepted
+  - lastUpdateTime: "2023-04-14T12:10:31Z"
+    status: "True"
+    type: ImageSynced
+  - lastUpdateTime: "2023-04-14T12:10:31Z"
+    status: "False"
+    type: Reconciling
+  - lastUpdateTime: "2023-04-14T12:10:31Z"
+    status: "False"
+    type: Stalled
+  - lastUpdateTime: "2023-04-17T08:24:14Z"
+    status: "True"
+    type: Synced
+  desiredReadyClusters: 3
+  display:
+    readyBundleDeployments: 3/3
+  gitJobStatus: Current
+  lastSyncedImageScanTime: null
+  observedGeneration: 1
+  readyClusters: 3
+  resourceCounts:
+    desiredReady: 6
+    missing: 0
+    modified: 0
+    notReady: 0
+    orphaned: 0
+    ready: 6
+    unknown: 0
+    waitApplied: 0
+  resources:
+  - apiVersion: apps/v1
+    id: fleet-mc-helm-example/frontend-edited
+    kind: Deployment
+    name: frontend-edited
+    namespace: fleet-mc-helm-example
+    state: Ready
+    type: apps.deployment
+  - apiVersion: apps/v1
+    id: fleet-mc-helm-example/redis-master-edited
+    kind: Deployment
+    name: redis-master-edited
+    namespace: fleet-mc-helm-example
+    state: Ready
+    type: apps.deployment
+  - apiVersion: apps/v1
+    id: fleet-mc-helm-example/redis-slave
+    kind: Deployment
+    name: redis-slave
+    namespace: fleet-mc-helm-example
+    state: Ready
+    type: apps.deployment
+  - apiVersion: v1
+    id: fleet-mc-helm-example/frontend
+    kind: Service
+    name: frontend
+    namespace: fleet-mc-helm-example
+    state: Ready
+    type: service
+  - apiVersion: v1
+    id: fleet-mc-helm-example/redis-master
+    kind: Service
+    name: redis-master
+    namespace: fleet-mc-helm-example
+    state: Ready
+    type: service
+  - apiVersion: v1
+    id: fleet-mc-helm-example/redis-slave
+    kind: Service
+    name: redis-slave
+    namespace: fleet-mc-helm-example
+    state: Ready
+    type: service
+  summary:
+    desiredReady: 3
+    ready: 3
