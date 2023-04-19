@@ -19,7 +19,7 @@ spec:
       matchLabels:
         env: test
 
-#  - name: prod
-#    clusterSelector:
-#      matchLabels:
-#        env: prod
+  - name: prod
+    clusterSelector:
+      matchLabels:
+        env: prod
