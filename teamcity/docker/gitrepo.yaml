@@ -18,8 +18,3 @@ spec:
     clusterSelector:
       matchLabels:
         env: test
-
-  - name: prod
-    clusterSelector:
-      matchLabels:
-        env: prod
